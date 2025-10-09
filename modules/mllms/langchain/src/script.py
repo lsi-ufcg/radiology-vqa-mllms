@@ -19,6 +19,8 @@ def get_mllm(model):
         return ChatOllama(model=model)
     if model == "llama3.2-vision:11b":
         return ChatOllama(model=model)
+    if model == "llava:13b":
+        return ChatOllama(model=model)
     if model == "gpt-4o":
         return init_chat_model(model, model_provider="openai")
     if model == "gemini-2.5-pro":
