@@ -100,6 +100,54 @@ weighted avg       0.76      0.71      0.69      1193
 10          PRSE  0.000000      1
 ```
 
+## LLaVA 13b
+
+```
+closed-ended questions in sample: 1299
+rows discarded: 107 (expected answer or model answer is not yes/no)
+valid rows: 1192
+yes: 586
+no: 606
+```
+
+### Confusion Matrix
+
+![alt text](assets/llava-confusion-matrix.png)
+
+### Classification Report
+
+```
+Strict Accuracy: 56.04%
+Classification Report:
+
+              precision    recall  f1-score   support
+
+          no       0.56      0.67      0.61       606
+         yes       0.57      0.45      0.50       586
+
+    accuracy                           0.56      1192
+   macro avg       0.56      0.56      0.55      1192
+weighted avg       0.56      0.56      0.55      1192
+```
+
+### F1 Score by Question Type
+
+```
+   question_type  f1_score  count
+5          ORGAN  0.769231     17
+8            POS  0.727273     21
+4       MODALITY  0.666667     72
+6          OTHER  0.571429     52
+7          PLANE  0.566667     53
+3          COUNT  0.545455     10
+11          SIZE  0.510949    157
+2          COLOR  0.500000     32
+9           PRES  0.456814    630
+1         ATTRIB  0.425532     47
+0            ABN  0.419753    121
+10          PRSE  0.000000      1
+```
+
 ## Llama 3.2 Vision 11b
 
 ```
