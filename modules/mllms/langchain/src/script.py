@@ -14,6 +14,7 @@ load_dotenv(override=True)
 MODEL = sys.argv[1]
 DATASET = "vqa-rad"
 
+
 def get_mllm(model):
     if model == "qwen2.5vl:7b":
         return ChatOllama(model=model)
@@ -26,6 +27,7 @@ def get_mllm(model):
     if model == "gemini-2.5-pro":
         return ChatGoogleGenerativeAI(model=model)
 
+
 mllm = get_mllm(MODEL)
 system_message = {
     "role": "system",
@@ -35,6 +37,7 @@ system_message = {
 
 def get_time():
     return datetime.now().strftime("%H:%M:%S")
+
 
 def process_sample(sample, sample_dir):
     for index, question in enumerate(sample):
@@ -46,7 +49,9 @@ def process_sample(sample, sample_dir):
         ) as image_file:
             image_data = base64.b64encode(image_file.read()).decode("utf-8")
             help = (
-                "This is a closed-ended question. Answer with only yes or no."
+                """
+                This is a closed-ended question. Answer should follow this template: '<ANSWER> : <CONFIDENCE>'. Where <ANSWER> is only 'yes' or 'no' and <CONFIDENCE> is a number between 0 and 1 that tells the confidence level of your answer.
+                """
                 if sample_dir.startswith("closed")
                 else ""
             )
@@ -84,7 +89,10 @@ def process_sample(sample, sample_dir):
             if MODEL == "gemini-2.5-pro":
                 print(f"[INFO] {get_time()} - Waiting for 4 seconds")
                 import time
+
                 time.sleep(4)
+
+
 samples_dir = ["closed/population"]
 
 for sample_dir in samples_dir:
