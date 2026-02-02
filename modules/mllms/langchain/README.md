@@ -1,33 +1,43 @@
 # Langchain
 
+## Supported models
+
+- GPT 4o
+- Gemini 2.5 Pro
+- Qwen 2.5 VL
+- Llama 3.2 Vision
+- Llava
+
+> Some models require API Keys
+
 ## Getting Started
 
-Creating and Installing dependencies in virtual environment
+Create a virtual environment  
+`python3.11 -m venv venv`
 
-`python3.11 -m venv venv`  
-`source venv/bin/activate`  
+Activate it  
+`source venv/bin/activate`
+
+Install dependencies  
 `pip install -r requirements.txt`
 
 Add `LANGCHAIN_API_KEY` in your .env file
 
-## Running app
+## Getting access to the models
+
+**GPT 4o**: Add `OPENAI_API_KEY` in your .env  
+**Gemini 2.5 Pro**: Add `GOOGLE_API_KEY` in your .env  
+**Qwen 2.5 VL**: `ollama pull qwen2.5vl:7b`  
+**Llama 3.2 Vision**: `ollama pull llama3.2-vision:11b`  
+**Llava**: `ollama pull llava:13b`
+
+## Running the App
 
 `python3.11 -u src/script.py <model> >> outputs/output-<model>.txt`
 
-`<model>` can be:
+Where `<model>` variable must be one of the following options:
 
-### llama3.2-vision:11b
-
-`ollama pull llama3.2-vision:11b`
-
-### qwen2.5vl:7b
-
-`ollama pull qwen2.5vl:7b`
-
-### gpt-4o
-
-Add `OPENAI_API_KEY` in your .env
-
-### gemini-2.5-pro
-
-Add `GOOGLE_API_KEY` in your .env
+llama3.2-vision:11b  
+qwen2.5vl:7b  
+gpt-4o  
+gemini-2.5-pro
